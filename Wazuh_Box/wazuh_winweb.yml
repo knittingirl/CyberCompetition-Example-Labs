@@ -1,0 +1,9 @@
+- name: Sets up the Wazuh agent on the Windows Webserver.
+  hosts: WinServ2016
+  remote_user: vagrant
+  gather_facts: no
+  tasks:
+    - name: Download and install agent
+      ansible.windows.win_shell: Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.10.0-1.msi -OutFile $env:tmp\wazuh-agent; msiexec.exe /i $env:tmp\wazuh-agent /q WAZUH_MANAGER='192.168.56.100' WAZUH_AGENT_NAME='Windows-Web' 
+    - name: Start the agent
+      ansible.windows.win_shell: NET START WazuhSvc

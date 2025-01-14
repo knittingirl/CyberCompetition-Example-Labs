@@ -1,0 +1,20 @@
+- name: This will set up a vsftpd vulnerability on the Ubuntu 20.04 machine
+  hosts: VSFTP
+#    vars:  
+#      ansible_python_interpreter: /usr/bin/python3
+  remote_user: vagrant
+  gather_facts: no
+  tasks:
+    - name: Get git directory
+      shell: git clone https://github.com/nikdubois/vsftpd-2.3.4-infected.git
+    - name: Update
+      shell: sudo apt update
+    - name: install gcc
+      shell: sudo apt-get install -y gcc
+    - name: Run shell script on remote server
+      script: setup.sh
+      args:
+        chdir: /home/vagrant/vsftpd-2.3.4-infected/
+
+    - name: Run vsftpd
+      shell: sudo /usr/local/sbin/vsftpd &

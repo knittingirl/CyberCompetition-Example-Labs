@@ -1,0 +1,13 @@
+- name: This sets up the wazuh manager/server/indexer by using the quickstart methodology
+  hosts: Wazuh-Box
+  remote_user: vagrant
+  gather_facts: no
+  tasks:
+    - name: Install/start wazuh
+      shell: curl -sO https://packages.wazuh.com/4.10/wazuh-install.sh && sudo bash ./wazuh-install.sh -a
+
+    - name: Install wazuh password tool
+      shell: curl -so wazuh-passwords-tool.sh https://packages.wazuh.com/4.10/wazuh-passwords-tool.sh
+
+    - name: Hard-coding a wazuh password for the dashboard
+      shell: sudo bash wazuh-passwords-tool.sh -u admin -p WazuhPass1?
