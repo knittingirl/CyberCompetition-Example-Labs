@@ -9,4 +9,6 @@ ansible-playbook manager.yml -i inventory.txt --extra-vars 'ansible_password=vag
 
 ansible-playbook vsftp_agent.yml -i ../VSFTP_Box/inventory.txt --extra-vars 'ansible_password=vagrant ansible_user=vagrant'
 
+ansible-playbook pwnable_agent.yml -i ../Pwnable_Linux/inventory.txt --extra-vars 'ansible_password=vagrant ansible_user=vagrant'
+
 ansible-playbook -i ../Windows_Webshell/inventory.txt wazuh_winweb.yml
