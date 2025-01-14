@@ -1,0 +1,14 @@
+- name: This sets up the wazuh manager/server/indexer by using the quickstart methodology
+  hosts: Pwnable
+  remote_user: vagrant
+  gather_facts: no
+  tasks:
+    - name: Install/start wazuh
+      shell: wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.7.5-1_amd64.deb && sudo WAZUH_MANAGER='192.168.56.100' WAZUH_AGENT_NAME='Ubuntu-20' dpkg -i ./wazuh-agent_4.7.5-1_amd64.deb
+
+    - name: Daemon-Reload
+      shell: sudo systemctl daemon-reload
+    - name: Enable agent
+      shell: sudo systemctl enable wazuh-agent
+    - name: Start agent
+      shell: sudo systemctl start wazuh-agent
