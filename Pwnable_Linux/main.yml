@@ -1,7 +1,5 @@
 - name: This sets up a more pwn-themed Linux machine
   hosts: Pwnable
-#    vars:  
-#      ansible_python_interpreter: /usr/bin/python3
   remote_user: vagrant
   become: yes
   become_user: root
