@@ -6,7 +6,7 @@ ENV['VAGRANT_DEFAULT_PROVIDER'] = 'vmware_desktop'
 boxes = [
  #Experimental Ubuntu box
 #Probably change the IP
-  { :name => "VSFTP", :ip => "192.168.56.200", :box => "kalilinux/rolling", :box_version => "2024.4", :os => "linux"},
+  { :name => "Kali_Attack_Box", :ip => "192.168.56.200", :box => "kalilinux/rolling", :box_version => "2024.4", :os => "linux"},
 ]
 
   config.vm.provider "virtualbox" do |v|
